@@ -89,7 +89,7 @@ fn main() -> Result<(), LancasterError> {
         \_____/\_| |_/\_| \_/\____/\_| |_/\____/ \___/\_|  |_/
                                                               
                                                               
-        Simulate battle results with Lancaster simulation."#)
+        Simulate battle results with LANCASIM."#)
         .arg(
             Arg::new("file")
                 .required(true)
