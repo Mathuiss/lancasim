@@ -50,13 +50,13 @@ pub fn run_all(
     Ok(())
 }
 
-/// Tun one simulation based on:
+/// Run one simulation based on:
 /// - The number of blue units
 /// - The number of red units
 /// - The blue attrition coefficient
 /// - The red attrition coefficient
 ///
-/// The attrition coefficient if the effectiveness of the team.
+/// The attrition coefficient is the effectiveness of the team.
 /// A high blue attrition coefficient means lots of damage to red.
 fn run_simulation(
     tx: Sender<SimulationResult>,
