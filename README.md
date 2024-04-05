@@ -39,7 +39,7 @@ The simulation environment will run a simulation for all points on a `blue` by `
 
 **Running simulations**
 
-Starting lancasim with the `--help` option will show the following parameters:
+Starting lancasim with the `--help` option will show the following:
 
 ```
          _       ___   _   _ _____   ___   _____ ________  ___
