@@ -7,23 +7,28 @@ use std::{
     thread::{self, JoinHandle},
 };
 
+/// Function spawn the writer thread with the file handle and results channel.
+/// It continuously loops calling `rx.recv()`, and writes that simulation result to the `.csv` file.
 pub fn spawn_writer(
     rx: Receiver<SimulationResult>,
     sim_name: String,
     output_dir: PathBuf,
     full_results: bool,
 ) -> Result<JoinHandle<Result<(), LancasterError>>, LancasterError> {
+    // Create the results file
     let main_file = output_dir.join(format!("{}.csv", sim_name));
     let mut main_file = fs::File::create_new(main_file)?;
     main_file
         .write_all(b"blue_effectiveness,red_effectiveness,engagements,blue_units,red_units\n")?;
 
     let handler = thread::spawn(move || loop {
+        // Read new simulation result from channel
         let sim_result = match rx.recv() {
             Ok(o) => o,
             Err(_) => return Err::<(), LancasterError>(LancasterError::from_str("Err")),
         };
 
+        // Write that result to file
         main_file.write_all(
             format!(
                 "{},{},{},{},{}\n",
@@ -36,6 +41,7 @@ pub fn spawn_writer(
             .as_bytes(),
         )?;
 
+        // Only if full diagnostics are enabled, write these to corresponding files
         if full_results {
             let results_file = output_dir.join(format!(
                 "b{}-r{}.csv",

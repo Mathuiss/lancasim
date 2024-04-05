@@ -1,10 +1,9 @@
+use crate::{error::ConfigError, writer::spawn_writer};
 use clap::{Arg, ArgAction, Command};
 use config::StartupConfig;
 use error::LancasterError;
 use models::SimulationResult;
 use std::{env, fs, path::PathBuf, sync::mpsc::channel};
-
-use crate::{error::ConfigError, writer::spawn_writer};
 
 mod config;
 mod error;
