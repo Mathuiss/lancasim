@@ -122,6 +122,7 @@ impl Battlefield {
         self.red_units
     }
 
+    /// Simulate one engagement based on [Lanchester's square law](https://en.wikipedia.org/wiki/Lanchester%27s_laws)
     pub fn simulate_turn(&mut self) -> (i64, i64) {
         let blue_casualties = (self.red_units as f32 * self.red_ac).ceil() as i64;
         let red_casualties = (self.blue_units as f32 * self.blue_ac).ceil() as i64;

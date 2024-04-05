@@ -58,6 +58,8 @@ pub fn run_all(
 ///
 /// The attrition coefficient is the effectiveness of the team.
 /// A high blue attrition coefficient means lots of damage to red.
+///
+/// The simulation will run until one team runs out of units
 fn run_simulation(
     tx: Sender<SimulationResult>,
     blue_units: i64,
