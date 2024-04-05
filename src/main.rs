@@ -14,8 +14,17 @@ mod writer;
 /// Some type of explanation of **lancasim**
 fn main() -> Result<(), LancasterError> {
     let cmd = Command::new("lancasim")
-        .version("0.1")
-        .about("Simulate battle results with Lancaster simulation.")
+        .version("1.0")
+        .about(r#"
+         _       ___   _   _ _____   ___   _____ ________  ___
+        | |     / _ \ | \ | /  __ \ / _ \ /  ___|_   _|  \/  |
+        | |    / /_\ \|  \| | /  \// /_\ \\ `--.  | | | .  . |
+        | |    |  _  || . ` | |    |  _  | `--. \ | | | |\/| |
+        | |____| | | || |\  | \__/\| | | |/\__/ /_| |_| |  | |
+        \_____/\_| |_/\_| \_/\____/\_| |_/\____/ \___/\_|  |_/
+                                                              
+                                                              
+        Simulate battle results with Lancaster simulation."#)
         .arg(
             Arg::new("file")
                 .required(true)
